@@ -1,3 +1,7 @@
+html {
+  font-family: 'Sarabun', sans-serif !important; 
+}
+
 .content-page {
     margin: 0 auto;
     min-height: 100vh;
@@ -95,4 +99,27 @@ a:not([href]) {
     cursor: auto;
     background-color: #fff;
     border-color: #dee2e6;
+}
+
+.body-content {
+    padding: 20px;
+    height: 80vh;
+}
+
+input {
+    border: 1px solid #D7D7D7 !important;
+}
+
+.subtopic {
+    height: 25px;
+    font-weight: 700;
+    color: #000000;
+    float: left;
+    cursor: pointer;
+    position: relative;
+}
+
+.clean5 {
+    clear: both;
+    height: 5px;
 }

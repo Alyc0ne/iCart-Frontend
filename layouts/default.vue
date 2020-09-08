@@ -7,38 +7,7 @@
             <li class="nav-item" v-for="(item, i) in listUrl" :key="i" :to="item.to" router exact>
               <nuxt-link class="nav-link" :to="item.to">{{ item.title }}</nuxt-link>
             </li>
-            <!-- <li class="nav-item">
-              <a href="/icons" class="nav-link"><i class="ni ni-planet text-blue"></i><span class="nav-link-text">Icons</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="/maps" class="nav-link"><i class="ni ni-pin-3 text-orange"></i><span class="nav-link-text">Maps</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="/profile" class="nav-link"><i class="ni ni-single-02 text-yellow"></i><span class="nav-link-text">User Profile</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="/tables" class="nav-link"><i class="ni ni-bullet-list-67 text-red"></i><span class="nav-link-text">Tables</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="/login" class="nav-link"><i class="ni ni-key-25 text-info"></i><span class="nav-link-text">Login</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="/register" class="nav-link"><i class="ni ni-circle-08 text-pink"></i><span class="nav-link-text">Register</span></a>
-            </li> -->
           </ul>
-          <!-- <hr class="my-3">
-          <h6 class="navbar-heading text-muted">Documentation</h6>
-          <ul class="navbar-nav mb-md-3">
-            <li class="nav-item">
-              <a href="https://demos.creative-tim.com/vue-argon-dashboard/documentation" class="nav-link"><i class="ni ni-spaceship"></i> Getting started </a>
-            </li>
-            <li class="nav-item">
-              <a href="https://demos.creative-tim.com/vue-argon-dashboard/documentation/foundation/colors.html" class="nav-link"><i class="ni ni-palette"></i> Foundation </a>
-            </li>
-            <li class="nav-item">
-              <a href="https://demos.creative-tim.com/vue-argon-dashboard/documentation/components/alerts.html" class="nav-link"><i class="ni ni-ui-04"></i> Components </a>
-              </li>
-          </ul> -->
         </div>
       </nav>
     </div>

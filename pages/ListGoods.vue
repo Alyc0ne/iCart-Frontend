@@ -7,7 +7,7 @@
             <div class="row align-items-center">
               <div class="col"><h3 class="mb-0"> Light Table </h3></div>
               <div class="col text-right">
-                <button type="button" id="modal" data-modalid='ModalGoods' data-modaltype='insert' class="btn btn-primary btn-sm" v-on:click="callModal($event)">สร้างสินค้า</button>
+                <button type="button" id="modal" data-modalid='ModalGoods' data-modaltype='insert' class="btn btn-outline-primary btn-sm" v-on:click="callModal($event)"><nuxt-link to="/NewGoods">{{ lang.Common.New + lang.Goods.Goods }}</nuxt-link></button>
               </div>
             </div>
           </div>
@@ -15,7 +15,7 @@
             <thead>
                 <tr>
                   <th>Barcode</th>
-                  <th>Name</th>
+                  <th>{{ lang.Common.Name + lang.Goods.Goods }}</th>
                   <th>Qty</th>
                   <th>Cost</th>
                 </tr>
@@ -50,215 +50,6 @@
         </div>
       </div>
     </div>
-    <!-- <v-card class="mx-auto shadow">
-      <v-card-title>
-        <v-row no-gutters class="header">
-        <v-col>
-          <span>รายการสินค้า</span>
-        </v-col>
-        <v-col class="text-right">
-          <v-btn outlined color="indigo">{{ langGoods.ActionNew }}</v-btn>
-        </v-col>
-      </v-row>
-      </v-card-title>
-      <v-simple-table :dense="false" :fixed-header="true" :height="450">
-        <template v-slot:default>
-          <thead>
-            <tr>
-              <th>Barcode</th>
-              <th>Name</th>
-              <th>Qty</th>
-              <th>Cost</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in tableData" :key="item.GoodsID">
-              <th>{{ item.GoodsBarcode }}</th>
-              <td>{{ item.GoodsName }}</td>
-              <td>{{ item.GoodsQty }}</td>
-              <td>฿{{ item.GoodsCost }}</td>
-            </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
-      <v-card class="d-flex mb-6" flat tile>
-        <v-card-title class="ml-auto" outlined tile>
-            <v-pagination
-        v-model="page"
-        :length="4"
-        circle
-      ></v-pagination>
-        </v-card-title>
-      </v-card>
-    </v-card> -->
-    <!-- <ManageGoodsModal :dialogGoods="dialogGoods"/> -->
-
-    <div class="modal fade in" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display:block !important; opacity:1 !important;">
-      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="tabs">
-              <ul>
-                <li v-for="tab in tabs" :key="tab.id" :class="{ active : tab.id == tabid }">
-                  <!-- :class="{ active : tab.id == 1 }" -->
-                    <a class="pointer" @click="switchTab(tab.id)">{{ tab.title }}</a>
-                </li>
-              </ul>
-            </div>
-
-
-            <form>
-              <div class="tabs-content">
-                <div class="tabs-info" :class="{activeTab : tabid == 1}">
-                  <div class="form-group row">
-                    <label for="GoodsName" class="col-sm-2 col-form-label text-left">ชื่อสินค้า</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="GoodsName" placeholder="ชื่อสินค้า">
-                    </div>
-                  </div>
-                  <div class="form-group row">
-                      <label for="GoodsCost" class="col-sm-2 col-form-label text-left">ราคาต้นทุน</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control text-right" id="GoodsCost" placeholder="0.00">
-                      </div>
-
-                      <label for="GoodsPrice" class="col-sm-2 col-form-label text-left">ราคาขาย</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control text-right" id="GoodsPrice" placeholder="0.00">
-                      </div>
-                  </div>
-                  <!-- <div class="form-group row">
-                    <label for="GoodsPrice" class="col-sm-2 col-form-label text-left">ราคาขาย</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="GoodsPrice" placeholder="0.00">
-                    </div>
-                  </div> -->
-                </div>
-
-                <div class="tabs-info" :class="{activeTab : tabid == 2}">
-                  <div class="card shadow"> 
-                    <div class="card-header border-0">
-                      <div class="row align-items-center">
-                        <div class="col text-right">
-                          <button type="button" id="modal" data-modalid='ModalGoods' data-modaltype='insert' class="btn btn-outline-primary btn-sm" v-on:click="addUnit($event)">เพิ่มหน่วยนับ</button>
-                        </div>
-                      </div>
-                    </div>
-                    <table>
-                      <thead>
-                          <tr>
-                            <th>Barcode</th>
-                            <th>Barcode</th>
-                            <th>ชื่อหน่วยนับ</th>
-                            <th>หน่วยนับหลัก</th>
-                          </tr>
-                        </thead>
-                        <tbody v-if="!!ListUnit">
-                          <tr v-for="item in ListUnit" :key="item.uid">
-                            <td>
-                              <button type="button" id="modal" data-modalid='ModalUnit' data-modaltype='insert' class="btn btn-primary btn-sm" v-on:click="callModal($event)">แก้ไข</button>
-                            </td>
-                            <th>
-                              <div class="form-row">
-                                <div class="col">
-                                  <input type="text" class="form-control" placeholder="หน่วยนับ">
-                                </div>
-                              </div>
-                            </th>
-                            <td>{{ item.GoodsName }}</td>
-                            <td>
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="IsUnitMain">
-                                <label class="custom-control-label" for="IsUnitMain"></label>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                        <tbody v-else>
-                          <tr>
-                            <td colspan="4">กรุณาเพิ่มหน่วยนับ</td>
-                          </tr>
-                        </tbody>
-                    </table>
-                  </div>
-                  <!-- <div class="form-group row">
-                    <label for="GoodsName" class="col-sm-2 col-form-label text-left">ชื่อสินค้า</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="GoodsName" placeholder="ชื่อสินค้า">
-                    </div>
-                  </div> -->
-                  <!-- <div class="form-group row">
-                      <label for="GoodsCost" class="col-sm-2 col-form-label text-left">ราคาต้นทุน</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control text-right" id="GoodsCost" placeholder="0.00">
-                      </div>
-
-                      <label for="GoodsPrice" class="col-sm-2 col-form-label text-left">ราคาขาย</label>
-                      <div class="col-sm-4">
-                        <input type="text" class="form-control text-right" id="GoodsPrice" placeholder="0.00">
-                      </div>
-                  </div> -->
-                  <!-- <div class="form-group row">
-                    <label for="GoodsPrice" class="col-sm-2 col-form-label text-left">ราคาขาย</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="GoodsPrice" placeholder="0.00">
-                    </div>
-                  </div> -->
-                </div>
-              </div>
-
-
-
-
-              <!-- <div class="form-group">
-                <label for="inputAddress">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-              </div>
-              <div class="form-group">
-                <label for="inputAddress2">Address 2</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputCity">City</label>
-                  <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="form-group col-md-4">
-                  <label for="inputState">State</label>
-                  <select id="inputState" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>...</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-2">
-                  <label for="inputZip">Zip</label>
-                  <input type="text" class="form-control" id="inputZip">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                  <label class="form-check-label" for="gridCheck">
-                    Check me out
-                  </label>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary">Sign in</button> -->
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 <script>
@@ -270,12 +61,12 @@
       ManageGoodsModal
     },
     computed: {
-      langGoods () {
-        return this.$t('listGoods')
+      lang () {
+        return this.$t('Main')
       }
     },
     mounted() {
-      
+      console.log(this.lang);
     },
     data() {
       return {
@@ -414,47 +205,6 @@
     font-weight: 600;
   }
 
-  /* table thead th {
-    font-size: 0.65rem !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    border-bottom: 1px solid #e9ecef !important;
-    color: #8898aa !important;
-    background-color: #f6f9fc !important;
-    border-color: #e9ecef !important;
-  }
-
-  table th {
-    font-weight: 600 !important;
-    text-align: inherit !important;
-  }
-
-  table td, table th {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-    font-size: 0.8125rem !important;
-    white-space: nowrap !important;
-    padding: 1rem !important;
-    vertical-align: top !important;
-    border-top: 1px solid #e9ecef !important;
-  }
-
-  table tbody tr:first-child th {
-    font-size: 0.875rem !important;
-  }
-
-  table tbody tr:first-child td, table tbody tr:first-child th {
-    border-top: 0 !important;
-  }
-
-  table tbody tr th {
-    color: #525f7f;
-  }
-
-  table tbody tr td, table tbody tr th {
-    border-bottom: 0 !important;
-  } */
-
   .pointer {
     cursor: pointer;
   }
@@ -481,8 +231,10 @@
   }
 
   .tabs li.active {
-    border-bottom: solid 1px #00d1b2;
-    color: #00d1b2;
+    border-bottom: solid 1px #007bff;
+    color: #007bff;
+    /* border-bottom: solid 1px #00d1b2;
+    color: #00d1b2; */
   }
 
   .tabs-content {
@@ -500,4 +252,51 @@
   .modal-body {
     min-height: 40vh;
   }
+
+  /* transaction table */
+  .transaction-table th{
+    text-align: left;
+  }
+  
+  .transaction-table input[type="text"] {
+    width: 100%;
+    padding: 2px 10px 3px 5px;
+    height: 30px;
+  }
+
+  .transaction-table .input-group input[type="text"] {
+    width: 80%;
+  }
+
+  .transac-btn-picker {
+    background-color: #ffffff !important;
+    border: 1px solid #cccccc !important;
+    border-left: none !important;
+    border-radius: 0px;
+    box-shadow: none;
+    width: 30px;
+    height: 30px;
+  }
+
+/* .transaction-table .input-group {
+  border: 1px gray solid;
+  padding: 6px;
+}
+
+.transaction-table .input-group input {
+  border:none;
+  background-color: transparent;
+  height: 15px;
+}
+
+.transaction-table input {
+  border: 1px gray solid;
+  padding: 6px;
+  height: 15px;
+}
+
+.transaction-table input.form-control:focus {
+  border-color: #f2f2f2 !important;
+  box-shadow: none;
+} */
 </style>
