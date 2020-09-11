@@ -12,7 +12,7 @@
           <div class="body-content">
             <div class="tabs">
               <ul>
-                <li v-for="tab in tabs" :key="tab.id" :class="{ active : tab.id == tabid }">
+                <li v-for="tab in tabs" :key="tab.id" :class="{ active : tab.id == tabid }" :disabled="{ disabled : tab.id == 3 }">
                     <a class="pointer" @click="switchTab(tab.id)">{{ tab.title }}</a>
                 </li>
               </ul>
@@ -21,41 +21,66 @@
             <form>
               <div class="tabs-content">
                 <div class="tabs-info" :class="{activeTab : tabid == 1}">
-                    <div class="col-sm-6">
-                        <div class="form-group row">
-                            <label for="GoodsName" class="col-sm-3 col-form-label text-left">{{ lang.Common.Name + lang.Goods.Goods }}</label>
-                            <div class="col-sm-9">
-                            <textarea class="form-control" id="GoodsName" rows="3"></textarea>
-                            </div>
-                        </div>
-                        <div class="subtopic">
-                            รายละเอียดราคา
-                        </div>
-                        <div class="clean"></div>
-                        <div class="form-group row">
-                            <label for="GoodsCost" class="col-sm-3 col-form-label text-left">ราคาต้นทุน</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control text-right" id="GoodsCost" placeholder="0.00">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="GoodsPrice" class="col-sm-3 col-form-label text-left">ราคาขาย</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control text-right" id="GoodsPrice" placeholder="0.00">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="GoodsName" class="col-sm-3 col-form-label text-left">{{ lang.Common.Detail }}</label>
-                            <div class="col-sm-9">
-                            <textarea class="form-control" id="GoodsDesc" rows="3"></textarea>
-                            </div>
+                  <div class="col-sm-12">
+                    <div class="subtopic">ข้อมูลสินค้า</div>
+                  </div>
+                    <div class="clean"></div>
+                    <div class="form-group row">
+                      <label for="GoodsName" class="col-sm-2 col-form-label text-left">
+                        <span class="req">*</span>{{ lang.Common.No + lang.Goods.Goods }}
+                      </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control w40vw" id="GoodsNo" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="GoodsName" class="col-sm-2 col-form-label text-left">
+                        <span class="req">*</span>{{ lang.Common.Name + lang.Goods.Goods }}
+                      </label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control w40vw" id="GoodsName">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="CateNo" class="col-sm-2 col-form-label text-left">
+                        <span class="req">*</span>หมวดหมู่{{ lang.Goods.Goods }}
+                      </label>
+                      <div class="col-sm-10 group-picker">
+                        <input type="text" class="form-control w15vw" id="CateNo" disabled>
+                        <input type="text" class="form-control w20vw" id="CateName" disabled>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="GoodsDesc" class="col-sm-2 col-form-label text-left">
+                        <span class="req"></span>{{ lang.Common.Detail }}
+                      </label>
+                      <div class="col-sm-10">
+                      <textarea class="form-control" id="GoodsDesc w40vw" rows="3"></textarea>
+                      </div>
+                    </div>
+                    <div class="subtopic">
+                        รายละเอียดราคา
+                    </div>
+                    <div class="clean"></div>
+                    <div class="form-group row">
+                        <label for="GoodsCost" class="col-sm-2 col-form-label text-left">
+                          <span class="req"></span>ราคาต้นทุน
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control text-right" id="GoodsCost" placeholder="0.00">
                         </div>
                     </div>
-                    <div class="col-sm6">
-                        
+                    <div class="form-group row">
+                        <label for="GoodsPrice" class="col-sm-2 col-form-label text-left">
+                          <span class="req">*</span>ราคาขาย
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control text-right" id="GoodsPrice" placeholder="0.00">
+                        </div>
                     </div>
                 </div>
 
+                <!-- Tab Unit -->
                 <div class="tabs-info" :class="{activeTab : tabid == 2}">
                   <div class="card shadow"> 
                     <div class="card-header border-0">
@@ -77,7 +102,7 @@
                             <th></th>
                           </tr>
                         </thead>
-                        <!-- <tbody v-if="!!ListUnit">
+                        <tbody v-if="!!ListUnit">
                           <tr v-for="item in ListUnit" :key="item.uid">
                             <td>
                               <font-awesome-icon :icon="['fas', 'check']" />
@@ -108,9 +133,13 @@
                           <tr>
                             <td colspan="4">กรุณาเพิ่มหน่วยนับ</td>
                           </tr>
-                        </tbody> -->
+                        </tbody>
                     </table>
                   </div>
+                </div>
+
+                <div class="tabs-info" :class="{activeTab : tabid == 3}">
+
                 </div>
               </div>
             </form>
@@ -147,6 +176,10 @@
           {
             id: 2,
             title: 'หน่วยนับ'
+          },
+          {
+            id: 3,
+            title: 'รูปภาพ'
           }
         ],
         ListUnit:[]
@@ -243,7 +276,7 @@
 
   .tabs ul{
     display: flex;
-    align-items: center;
+    text-align: left;
     margin: 0;
     padding: 0;
   }
@@ -261,6 +294,10 @@
   .tabs li.active {
     border-bottom: solid 1px #007bff;
     color: #007bff;
+  }
+
+  .tabs li a {
+   padding-left: 10px;
   }
 
   .tabs-content {

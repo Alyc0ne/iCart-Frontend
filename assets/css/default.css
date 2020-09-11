@@ -1,4 +1,4 @@
-html {
+body {
   font-family: 'Sarabun', sans-serif !important; 
 }
 
@@ -111,15 +111,48 @@ input {
 }
 
 .subtopic {
-    height: 25px;
-    font-weight: 700;
-    color: #000000;
-    float: left;
+    /* width: auto;
+    float: left; */
+    width: 100%;
+    text-align: left;
+    height: 45px;
+    font-size: 22px;
+    margin-bottom: 2px;
     cursor: pointer;
-    position: relative;
 }
 
 .clean5 {
     clear: both;
     height: 5px;
+}
+
+.req {
+    min-width: 20px;
+    height: 5px;
+    padding: 0px 7px;
+    color: red;
+    /* float: left; */
+    margin-top: 5px;
+}
+
+div.form-group.row {
+    margin-left: 20px !important;
+}
+
+.group-picker {
+    display: flex;
+}
+
+.group-picker input:first-child {
+    width: 15vw;
+    margin-right: 20px;
+}
+
+.group-picker input:last-child {
+    width: 20vw;
+}
+
+
+.w40vw {
+    width: 40vw;
 }
