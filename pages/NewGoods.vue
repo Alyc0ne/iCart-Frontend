@@ -55,7 +55,7 @@
                         <span class="req"></span>{{ lang.Common.Detail }}
                       </label>
                       <div class="col-sm-10">
-                      <textarea class="form-control" id="GoodsDesc w40vw" rows="3"></textarea>
+                      <textarea class="form-control w40vw" id="GoodsDesc" rows="3"></textarea>
                       </div>
                     </div>
                     <div class="subtopic">
@@ -67,7 +67,7 @@
                           <span class="req"></span>ราคาต้นทุน
                         </label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control text-right" id="GoodsCost" placeholder="0.00">
+                            <input type="text" class="form-control w40vw text-right" id="GoodsCost" placeholder="0.00">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -75,7 +75,7 @@
                           <span class="req">*</span>ราคาขาย
                         </label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control text-right" id="GoodsPrice" placeholder="0.00">
+                            <input type="text" class="form-control w40vw text-right" id="GoodsPrice" placeholder="0.00">
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,8 @@
                                 <div class="input-group">
                                   <input type="text" class="form-control" disabled>
                                   <span class="input-group-btn">
-                                    <button class="transac-btn-picker" type="button"><font-awesome-icon :icon="['fas', 'search']" /></button>
+                                    <!-- <button class="transac-btn-picker" type="button"><font-awesome-icon :icon="['fas', 'search']" @click="this.dialogUnit = true"/></button> -->
+                                    <button class="transac-btn-picker" type="button"><font-awesome-icon :icon="['fas', 'search']" @click="callModal(true)"/></button>
                                   </span>
                                 </div>
                               </div>
@@ -136,6 +137,10 @@
                         </tbody>
                     </table>
                   </div>
+                  <div class="modal-backdrop">
+                    <ManageUnitModal v-bind:dialog="dialogUnit"/>
+                  </div>
+                  
                 </div>
 
                 <div class="tabs-info" :class="{activeTab : tabid == 3}">
@@ -150,12 +155,12 @@
   </div>
 </template>
 <script>
-  import ManageGoodsModal from '@/components/Shared/Modal/GoodsModal'
+  import ManageUnitModal from '@/components/Shared/Modal/ManageUnitModal'
 
   export default {
     name: 'NewGoods',
     components: {
-      ManageGoodsModal
+      ManageUnitModal
     },
     computed: {
       lang () {
@@ -182,7 +187,8 @@
             title: 'รูปภาพ'
           }
         ],
-        ListUnit:[]
+        ListUnit:[],
+        dialogUnit: false
       }
     },
     methods: {
@@ -190,9 +196,10 @@
         this.tabid = $val;
       },
       callModal: function (event) {
-        var id = event.target.id;
-        var element = document.querySelector('#' + id);
-        this.dialogGoods = true;
+        // var id = event.target.id;
+        // var element = document.querySelector('#' + id);
+        this.dialogUnit = true;
+        console.log('callmodal')
       },
       addUnit: function () {
         var obj = {
