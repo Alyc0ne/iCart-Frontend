@@ -10,6 +10,7 @@ body {
     align-items: center;
     text-align: center;
     margin-left: 250px;
+    background-color: #f8f9fc;
 }
 
 .content-page .container-fluid {
@@ -155,4 +156,9 @@ div.form-group.row {
 
 .w40vw {
     width: 40vw;
+}
+
+
+.modalbackdrop {
+    
 }

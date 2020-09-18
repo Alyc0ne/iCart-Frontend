@@ -115,7 +115,7 @@
                                   <input type="text" class="form-control" disabled>
                                   <span class="input-group-btn">
                                     <!-- <button class="transac-btn-picker" type="button"><font-awesome-icon :icon="['fas', 'search']" @click="this.dialogUnit = true"/></button> -->
-                                    <button class="transac-btn-picker" type="button"><font-awesome-icon :icon="['fas', 'search']" @click="callModal(true)"/></button>
+                                    <button class="transac-btn-picker" type="button"><font-awesome-icon :icon="['fas', 'search']" @click="showModal"/></button>
                                   </span>
                                 </div>
                               </div>
@@ -137,10 +137,7 @@
                         </tbody>
                     </table>
                   </div>
-                  <div class="modal-backdrop">
-                    <ManageUnitModal v-bind:dialog="dialogUnit"/>
-                  </div>
-                  
+                    <ManageUnitModal v-show="isDialogUnit" @close="closeModal"/>
                 </div>
 
                 <div class="tabs-info" :class="{activeTab : tabid == 3}">
@@ -188,7 +185,7 @@
           }
         ],
         ListUnit:[],
-        dialogUnit: false
+        isDialogUnit: false
       }
     },
     methods: {
@@ -200,6 +197,12 @@
         // var element = document.querySelector('#' + id);
         this.dialogUnit = true;
         console.log('callmodal')
+      },
+      showModal() {
+        this.isDialogUnit = true;
+      },
+      closeModal() {
+        this.isDialogUnit = false;
       },
       addUnit: function () {
         var obj = {

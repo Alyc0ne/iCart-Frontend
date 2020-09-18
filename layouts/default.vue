@@ -11,7 +11,9 @@
         </div>
       </nav>
     </div>
+    <div class="header" style="height:50px;background-color:#fff;">
 
+    </div>
     <div class="content-page">
       <Nuxt />
     </div>
@@ -77,7 +79,7 @@ export default {
     padding-right: 1.5rem;
     overflow-y: auto;
     box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important;
-    background-color: #fff !important;
+    background-color:#4e73df !important;
   }
 
   .navbar-nav {
@@ -88,6 +90,7 @@ export default {
     padding-left: 1rem;
     padding-right: 1rem;
     font-size: 0.9rem;
+        color: #fff;
   }
 
   .nuxt-link-exact-active {
@@ -95,8 +98,10 @@ export default {
     bottom: 0.25rem;
     left: 0;
     right: auto;
-    border-left: 3px solid #5e72e4;
-    background: rgba(0,0,0,0.04);
+    /* border-left: 3px solid #5e72e4;
+       background: rgba(0,0,0,0.04); */
+    border-left: 3px solid #fff;
+    background: rgba(0, 0, 0, 0.8);
     border-bottom: 0;
     width: 100%;
     color: rgba(0, 0, 0, 0.9);
