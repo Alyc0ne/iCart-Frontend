@@ -11,7 +11,7 @@
         </div>
       </nav>
     </div>
-    <div class="header" style="height:50px;background-color:#fff;">
+    <div class="header">
 
     </div>
     <div class="content-page">
